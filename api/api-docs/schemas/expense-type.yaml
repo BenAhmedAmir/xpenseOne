@@ -1,0 +1,36 @@
+ExpenseTypes:
+  type: array
+  items:
+    $ref: "#/ExpenseType"
+
+ExpenseType:
+  type: object
+  properties:
+    id:
+      type: string
+    code:
+      type: string
+    type:
+      type: string
+    multiplicator:
+      type: integer
+      example: 0.25
+    i18n:
+      $ref: '#/Translations'
+
+Translations:
+  type: array
+  items:
+    type: object
+    properties:
+      lang:
+        type: string
+        example: "fr"
+      fields:
+        $ref: "#/Fields"
+
+Fields:
+  type: object
+  properties:
+    name:
+      type: string

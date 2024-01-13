@@ -1,0 +1,20 @@
+{
+  "name": "db-design",
+  "version": "1.0.0",
+  "description": "Contains DB design files and scripts to deploy them",
+  "main": "scripts/init-db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "exec": "node scripts/init-db.js",
+    "exec-test-data": "node scripts/init-test-data.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fs-promise": "^2.0.3",
+    "nano": "^9.0.1"
+  }
+}

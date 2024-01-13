@@ -1,0 +1,87 @@
+{
+  "_id": "sys:rights",
+  "rights": [
+    {
+      "code": "org-edit",
+      "i18n": {
+        "fr": {
+          "name": "Modification organisation"
+        },
+        "en": {
+          "name": "Organization edition"
+        }
+      }
+    },
+    {
+      "code": "org-invite",
+      "i18n": {
+        "fr": {
+          "name": "Modification organisation"
+        },
+        "en": {
+          "name": "Organization edition"
+        }
+      }
+    }
+  ]
+}
+
+[
+  {
+    "code": "admin",
+    // Hard codé
+    "i18n": {
+      "fr": {
+        "name": "Administrateur"
+      },
+      "en": {
+        "name": "Administrator"
+      }
+    },
+    "rights": [
+      "org-edit",
+      "org-invite",
+      "group-edit",
+      "tax-edit",
+      "expense-type-edit",
+      "sheet-archive",
+      "sheet-export",
+      "sheet-create",
+      "sheet-edit-submitted"
+    ]
+  },
+  {
+    "code": "super-user",
+    "i18n": {
+      "fr": {
+        "name": "Super Utilisateur"
+      },
+      "en": {
+        "name": "Super User"
+      }
+    },
+    "rights": [
+      "org-edit",
+      "org-invite",
+      "group-edit",
+      "tax-edit",
+      "expense-type-edit",
+      "sheet-create",
+      "sheet-edit-submitted"
+    ]
+  },
+  {
+    "name": "User",
+    "i18n": {
+      "fr": {
+        "name": "Utilisateur"
+      },
+      "en": {
+        "name": "User"
+      }
+    },
+    "rights": [
+      "sheet-create"
+    ]
+  }
+]

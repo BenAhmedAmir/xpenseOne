@@ -1,0 +1,89 @@
+[
+    {
+        "_id": "sheet:1",
+        "orgId": "org:paid-active",
+        "userId": "google-oauth2|103689881958333096958",
+        "label": "Sheet 1",
+        "approbations": [
+            {
+                "user": "Syrine",
+                "level": 1,
+                "approved": true
+            },
+            {
+                "user": "Wassim",
+                "level": 1,
+                "bypass": true
+            }
+        ],
+        "status": "new",
+        "exported": true,
+        "creationDate": "2018-05-02T15:02:40.628Z",
+        "submittedOn": "2018-05-23T10:10:00.628Z",
+        "attachments": [
+            {
+                "ext_id": "",
+                "filename": "file1.png",
+                "mime_type": "image/png",
+                "ref_type": "s3",
+                "url": "https://..."
+            }
+        ],
+        "total": 27.95
+    },
+    {
+        "_id": "sheet:2",
+        "orgId": "org:paid-active",
+        "userId": "google-oauth2|103689881958333096958",
+        "label": "Sheet 2",
+        "approbations": [
+            {
+                "user": "Syrine",
+                "level": 1,
+                "approved": true
+            },
+            {
+                "user": "Wassim",
+                "level": 1,
+                "approved": false
+            }
+        ],
+        "status": "pending",
+        "submittedOn": "2020-01-01",
+        "archived": true,
+        "total": 26.4
+    },
+    {
+        "_id": "sheet:3",
+        "orgId": "org:trial",
+        "userId": "google-oauth2|103689881958333096958",
+        "label": "Sheet 3",
+        "approbations": [
+            {
+                "user": "Syrine"
+            },
+            {
+                "user": "Wassim"
+            }
+        ],
+        "status": "approved",
+        "submittedOn": "2020-01-01"
+    },
+    {
+        "_id": "sheet:4",
+        "orgId": "org:paid-active",
+        "userId": "google-oauth2|103689881958333096958",
+        "label": "Sheet 4",
+        "approbations": [
+            {
+                "user": "Wassim",
+                "level": 1
+            }
+        ],
+        "status": "declined",
+        "exported": false,
+        "creationDate": "2018-03-02T15:02:40.628Z",
+        "submittedOn": "2018-04-20T10:10:00.628Z",
+        "total": 22.5
+    }
+]

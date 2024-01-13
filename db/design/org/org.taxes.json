@@ -1,0 +1,44 @@
+[
+    {
+        "_id": "tx:tps",
+        "code": "TPS",
+        "defaultRate": 0.05,
+        "orgId": "org:paid-active",
+        "i18n": {
+            "fr": {
+                "name": "Taxe sur les produits et services"
+            },
+            "en": {
+                "name": "Goods and services tax"
+            }
+        }
+    },
+    {
+        "_id": "tx:tvq",
+        "code": "TVQ",
+        "default_rate": 0.09975,
+        "orgId": "org:paid-active",
+        "i18n": {
+            "fr": {
+                "name": "Taxe de vente du Québec"
+            },
+            "en": {
+                "name": "Québec sales tax"
+            }
+        }
+    },
+    {
+        "_id": "tx:tvh",
+        "code": "TVH",
+        "default_rate": 0.14975,
+        "orgId": "org:paid-active",
+        "i18n": {
+            "fr": {
+                "name": "Taxe de vente harmonisée"
+            },
+            "en": {
+                "name": "Harmonized sales tax"
+            }
+        }
+    }
+]

@@ -1,0 +1,16 @@
+Amount:
+  type: object
+  properties:
+    curr:
+      type: string
+    value:
+      type: integer
+      example: 10.5
+    tax:
+      type: object
+      properties:
+        id:
+          type: string
+        value:
+          amount: integer
+          example: 10.5

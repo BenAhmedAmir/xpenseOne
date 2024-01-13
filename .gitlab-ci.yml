@@ -1,0 +1,119 @@
+stages:
+  - pr
+  - build
+  #- demo
+  #- deploy
+
+pr-build:
+  image: docker:latest
+  services:
+    - name: docker:dind
+      alias: docker
+  stage: pr
+  variables:
+    DOCKER_HOST: tcp://docker:2376/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: "/certs"
+  script:
+    - docker build -f ci/api/Dockerfile .
+    - docker build -f ci/app/Dockerfile .
+  only:
+    - merge_requests
+
+build-api-image:
+  image: docker:latest
+  services:
+    - name: docker:dind
+      alias: docker
+  stage: build
+  variables:
+    DOCKER_HOST: tcp://docker:2376/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: "/certs"
+    IMAGE_NAME: $CI_REGISTRY_IMAGE/api
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - echo api_img=$IMAGE_NAME:$CI_PIPELINE_ID-$CI_COMMIT_SHORT_SHA >> api.build.env
+  script:
+    - docker build -t $IMAGE_NAME:$CI_PIPELINE_ID-$CI_COMMIT_SHORT_SHA -f ci/api/Dockerfile .
+    - docker tag $IMAGE_NAME:$CI_PIPELINE_ID-$CI_COMMIT_SHORT_SHA $IMAGE_NAME:latest
+    - docker push $IMAGE_NAME:$CI_PIPELINE_ID-$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_NAME:latest
+  artifacts:
+    reports:
+      dotenv: api.build.env
+  only:
+    - master
+  #   changes:
+  #     - api/*
+  # when: manual
+
+build-app-image:
+  image: docker:latest
+  services:
+    - name: docker:dind
+      alias: dockerhost
+  stage: build
+  variables:
+    DOCKER_HOST: tcp://docker:2376/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: "/certs"
+    IMAGE_NAME: $CI_REGISTRY_IMAGE/app
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - echo app_img=$IMAGE_NAME:$CI_PIPELINE_ID-$CI_COMMIT_SHORT_SHA >> app.build.env
+  script:
+    - docker build -t $IMAGE_NAME:$CI_PIPELINE_ID-$CI_COMMIT_SHORT_SHA -f ci/app/Dockerfile .
+    - docker tag $IMAGE_NAME:$CI_PIPELINE_ID-$CI_COMMIT_SHORT_SHA $IMAGE_NAME:latest
+    - docker push $IMAGE_NAME:$CI_PIPELINE_ID-$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_NAME:latest
+  artifacts:
+    reports:
+      dotenv: app.build.env
+  only:
+    - master
+  #   changes:
+  #     - app/*
+  # when: manual
+
+# get-api-image:
+#   image: busybox:latest
+#   stage: demo
+#   script:
+#     - echo $api_img
+#   dependencies:
+#     - build-api-image
+#   needs:
+#     - job: build-api-image
+
+# get-app-image:
+#   image: busybox:latest
+#   stage: demo
+#   script:
+#     - echo $app_img
+#   dependencies:
+#     - build-app-image
+#   needs:
+#     - job: build-app-image
+
+# get-api-dotenv:
+#   image: busybox:latest
+#   stage: debug
+#   script:
+#     - cat "$API_dotenv" > .env
+#     - ls -lha .env
+#     - cat .env
+
+# deploy-to-dev:
+#   tags:
+#     - 138.197.169.86
+#   stage: deploy
+#   environment:
+#     name: dev
+#     url: http://dev.expense.bulldozerinc.com
+#   script:
+#     - pwd
+#     - ls -lha
+#     - docker ps
+#     - cp -R ci/compose /home/rancher/xpense/compose
+#   when: manual

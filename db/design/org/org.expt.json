@@ -1,0 +1,53 @@
+[
+    {
+        "_id": "expt:lunch",
+        "code": "123456",
+        "type": "money",
+        "orgId": "org:paid-active",
+        "multiplicator": 0.25,
+        "i18n": {
+            "fr": {
+                "name": "Déjeuner"
+            },
+            "en": {
+                "name": "Lunch"
+            }
+        },
+        "attachment_required": true,
+        "status": "active"
+    },
+    {
+        "_id": "expt:km",
+        "code": "524144",
+        "type": "km",
+        "multiplicator": 2.5,
+        "orgId": "org:paid-active",
+        "i18n": {
+            "fr": {
+                "name": "Kilomètre"
+            },
+            "en": {
+                "name": "Kilometer"
+            }
+        },
+        "attachment_required": false,
+        "status": "active"
+    },
+    {
+        "_id": "expt:gasoline",
+        "code": "987654",
+        "type": "money",
+        "multiplicator": 0.2,
+        "orgId": "org:trial",
+        "i18n": {
+            "fr": {
+                "name": "Essence"
+            },
+            "en": {
+                "name": "Gasoline"
+            }
+        },
+        "attachment_required": true,
+        "status": "archived"
+    }
+]

@@ -1,0 +1,167 @@
+[
+  {
+    "_id": "mbrhouma@bulldozerinc.com",
+    "first_name": "Moncef",
+    "last_name": "Belhaj Rhouma",
+    "password": "5F4DCC3B5AA765D61D8327DEB882CF99",
+    "approbation-workflow": "$id-équipe-tunis",
+    "organizations": [
+      123,
+      456
+    ],
+    "created_on": "2020-12-15 10:02:40",
+    "role": 123,
+    "groups": [
+      1,
+      2,
+      5
+    ],
+    "preferences": "",
+    "locations": [
+      {
+        "name": "Xyz",
+        "code": "45611",
+        "groups": [
+          1,
+          2,
+          3
+        ], // A verifier
+        "taxes": [
+          {
+            "code": "3514",
+            "rate": 10,
+            "name": "Azerty", // A enlever ?
+            "translation": [
+              {
+                "name": "Azerty",
+                "lang": "FR"
+              },
+              {
+                "name": "Qwerty",
+                "lang": "EN"
+              }
+            ],
+            "active_dates": [
+              "2020-12-15",
+              "2020-12-30"
+            ] // A discuter
+          }
+        ]
+      }
+    ],
+    "expense_types": [
+      10,
+      23
+    ],
+    "supervisor": "remi@bulldozerinc.com"
+  },
+  {
+    "_id": "houssem@bulldozerinc.com",
+    "first_name": "Houssem",
+    "last_name": "Ben Arbia",
+    "password": "5F4DCC3B5AA765D61D8327DEB882CF99",
+    "organizations": [
+      123,
+      456
+    ],
+    "created_on": "2020-12-15 10:02:40",
+    "role": 123,
+    "groups": [
+      1,
+      2,
+      5
+    ],
+    "preferences": "",
+    "locations": [
+      {
+        "name": "Xyz",
+        "code": "45611",
+        "groups": [
+          1,
+          2,
+          3
+        ], // A verifier
+        "taxes": [
+          {
+            "code": "3514",
+            "rate": 10,
+            "name": "Azerty", // A enlever ?
+            "translation": [
+              {
+                "name": "Azerty",
+                "lang": "FR"
+              },
+              {
+                "name": "Qwerty",
+                "lang": "EN"
+              }
+            ],
+            "active_dates": [
+              "2020-12-15",
+              "2020-12-30"
+            ] // A discuter
+          }
+        ]
+      }
+    ],
+    "expense_types": [
+      5,
+      23
+    ],
+    "supervisor": "remi@bulldozerinc.com"
+  },
+  {
+    "_id": "remi@bulldozerinc.com",
+    "first_name": "Remi",
+    "last_name": "Ferland",
+    "password": "5F4DCC3B5AA765D61D8327DEB882CF99",
+    "organizations": [
+      123,
+      456
+    ],
+    "created_on": "2020-12-15 10:02:40",
+    "role": 123,
+    "groups": [
+      1,
+      2,
+      5
+    ],
+    "preferences": "",
+    "locations": [
+      {
+        "name": "Xyz",
+        "code": "45611",
+        "groups": [
+          1,
+          2,
+          3
+        ], // A verifier
+        "taxes": [
+          {
+            "code": "3514",
+            "rate": 10,
+            "name": "Azerty", // A enlever ?
+            "translation": [
+              {
+                "name": "Azerty",
+                "lang": "FR"
+              },
+              {
+                "name": "Qwerty",
+                "lang": "EN"
+              }
+            ],
+            "active_dates": [
+              "2020-12-15",
+              "2020-12-30"
+            ] // A discuter
+          }
+        ]
+      }
+    ],
+    "expense_types": [
+      3
+    ],
+    "supervisor": null
+  }
+]

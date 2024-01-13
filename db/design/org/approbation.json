@@ -1,0 +1,96 @@
+{
+  "_id": "wrkfl:$id",
+  "name": "Approbation département TI Qc",
+  "workflow": [
+    {
+      "level": 1,
+      "user": "Sabeur"
+    },
+    {
+      "level": 2,
+      "user": "Mathieu",
+      "bypass": true
+    }
+  ]
+}
+
+
+{
+  "_id": "wrkfl:$id",
+  "name": "Approbation dépenses Équipe Tunis",
+  "workflow": [
+    {
+      "level": 1,
+      "user": "Syrine"
+    },
+    {
+      "level": 2,
+      "user": "Wassim",
+      "bypass": true
+    }
+  ]
+}
+
+
+
+// Affecte les usagers du groupe, pas les types de dépenses
+// Workflow d'approbation pour les employés de ce groupe
+"approval-workflow": [
+  {
+    "level": 1,
+    "user": "Syrine"
+  },
+  {
+    "level": 2,
+    "user": "Wassim"
+  }
+],
+"approbators-0": [
+  {
+    "level": 1,
+    "user": "Syrine"
+  }
+],
+"approbators-sequential": [
+  {
+    "level": 1,
+    "user": "Syrine"
+  },
+  {
+    "level": 2,
+    "user": "Wassim"
+  }
+],
+"approbators-parralel": [
+  {
+    "level": 1,
+    "user": "Syrine"
+  },
+  {
+    "level": 1,
+    "user": "Wassim"
+  }
+],
+"approbators-mix": [
+  {
+    "level": 1,
+    "user": "Syrine"
+  },
+  {
+    "level": 1,
+    "user": "Wassim",
+    "bypass": true
+  },
+  {
+    "level": 2,
+    "user": "Mathieu"
+  },
+  {
+    "level": 2,
+    "user": "Sabeur"
+  },
+  {
+    "level": 3,
+    "user": "Marcel"
+  }
+]

@@ -1,0 +1,26 @@
+CreateGroup:
+  type: object
+  properties:
+    name:
+      type: string
+Groups:
+  type: array
+  items:
+    $ref: './group.yaml#/Group'
+Group:
+  type: object
+  properties:
+    id:
+      type: string
+    name:
+      type: string
+    orgId:
+      type: string
+    members:
+      type: array
+      items:
+        type: string
+    expenseTypes:
+      type: array
+      items:
+        type: string

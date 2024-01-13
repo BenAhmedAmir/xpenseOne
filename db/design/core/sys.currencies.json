@@ -1,0 +1,41 @@
+{
+  "_id": "sys:currencies",
+  "currencies": [
+    {
+      "code": "CAD",
+      "format": "$(x:0 000,00) $",
+      "i18n": {
+        "fr": {
+          "name": "Dollar Canadien"
+        },
+        "en": {
+          "name": "Canadian Dollars"
+        }
+      }
+    },
+    {
+      "code": "USD",
+      "format": "$ $(x:0'000,00)",
+      "i18n": {
+        "fr": {
+          "name": "Dollar Américain"
+        },
+        "en": {
+          "name": "Canadian Dollars"
+        }
+      }
+    },
+    {
+      "code": "TND",
+      "format": "$(x:0 000,00) DT",
+      "i18n": {
+        "fr": {
+          "name": "Dinar tunisien"
+        },
+        "en": {
+          "name": "Tunisian Dinar"
+        }
+      }
+    }
+  ]
+}

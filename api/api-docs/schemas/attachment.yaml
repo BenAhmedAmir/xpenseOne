@@ -1,0 +1,7 @@
+Attachment:
+  type: object
+  properties:
+    name:
+      type: string
+    originalName:
+      type: string

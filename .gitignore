@@ -1,0 +1,15 @@
+node_modules/
+.next/
+
+.env
+.env.local
+.env.development
+
+dist/
+
+.idea/
+
+# exclude everything in public/files folder
+api/public/files/*
+# exception to the rule
+!api/public/files/.gitkeep

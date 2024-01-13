@@ -1,0 +1,57 @@
+﻿Profile:
+ type: object
+ properties:
+   userId:
+     type: string
+   email:
+     type: string
+   name:
+     type: string
+   nickname:
+     type: string
+   lastName:
+     type: string
+   firstName:
+     type: string
+   picture:
+     type: string
+   defaultCurrencyId:
+     type: string
+   phoneNumber:
+     type: string
+   organizations:
+     type: array
+     items:
+       type: string
+UpdateProfile:
+  type: object
+  properties:
+    phoneNumber:
+      type: string
+    defaultCurrencyId:
+      type: string
+    email:
+      type: string
+    lastName:
+      type: string
+    firstName:
+      type: string
+    preferredLang:
+      type: string
+Users:
+  type: array
+  items:
+    $ref: './profile.yaml#/Profile'
+
+Roles:
+  type: array
+  items:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+        nullable: true

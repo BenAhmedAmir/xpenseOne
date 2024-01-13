@@ -1,0 +1,26 @@
+/*
+V2 pour la gestion de clients
+*/
+
+{
+  "code": "AAA",
+  "name": "Client 1",
+  "groups": [
+    ""
+  ]
+}
+
+[
+  {
+    "code": "AAA",
+    "name": "Client 1",
+    "groups": [
+      ""
+    ]
+  },
+  {
+    "code": "BBB",
+    "name": "Client 2",
+    "groups": []
+  }
+]

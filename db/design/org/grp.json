@@ -1,0 +1,18 @@
+/*
+Id hard codé.
+On a besoin d'un préfix pour l'utilisation des partitions
+Document de type "Groupe"
+Regroupe une liste d'employés qui ont accès à une liste prédéterminée de type de dépense
+*/
+{
+  "_id": "grp:$id",
+  "name": "Groupe 1",
+  // Liste des usagers
+  "members": [
+    "remi", "Houssem"
+  ],
+  // Ont accès à tous ces types
+  "available-expense-types": [
+    "km", "repas"
+  ]
+}

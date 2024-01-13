@@ -1,0 +1,34 @@
+Taxes:
+  type: array
+  items:
+    $ref: "#/Tax"
+
+Tax:
+  type: object
+  properties:
+    id:
+      type: string
+    code:
+      type: string
+    defaultRate:
+      type: integer
+      example: 0.09975
+    i18n:
+      $ref: '#/Translations'
+
+Translations:
+  type: array
+  items:
+    type: object
+    properties:
+      lang:
+        type: string
+        example: "fr"
+      fields:
+        $ref: "#/Fields"
+
+Fields:
+  type: object
+  properties:
+    name:
+      type: string

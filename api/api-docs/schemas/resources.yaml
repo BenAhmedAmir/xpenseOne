@@ -1,0 +1,13 @@
+Currencies:
+  type: array
+  items:
+    type: object
+    properties:
+      code:
+        type: string
+      format:
+        type: string
+      nameFR:
+        type: string
+      nameEN:
+        type: string

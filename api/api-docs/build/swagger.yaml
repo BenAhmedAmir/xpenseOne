@@ -1,0 +1,986 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Xpense web api
+  description: Xpense web api.
+servers:
+  - url: 'http://localhost:7000/api'
+  - url: 'https://dev.api.xpense.bulldozerinc.com/api'
+paths:
+  /profile:
+    get:
+      summary: Get user profile from Auth0
+      tags:
+        - Profile
+      operationId: getProfile
+      responses:
+        '200':
+          description: Current user Profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update user profile
+      tags:
+        - Profile
+      operationId: updateProfile
+      requestBody:
+        description: Update profile body request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProfile'
+      responses:
+        '200':
+          description: Update user Profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /org:
+    get:
+      summary: Get user organizations
+      tags:
+        - Organization
+      operationId: getOrganizations
+      responses:
+        '200':
+          description: Current user organizations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organizations'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  '/org/{orgId}':
+    get:
+      summary: get organization by ID
+      tags:
+        - Organization
+      operationId: getOrganization
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Current user organizations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update organization
+      tags:
+        - Organization
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+      operationId: updateOrganization
+      requestBody:
+        description: Update organization body request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrganization'
+      responses:
+        '204':
+          description: Organization updated.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  '/org/{orgId}/sheets':
+    get:
+      summary: Get user organization sheets
+      tags:
+        - Organization
+      operationId: getSheets
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Current user organization sheets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sheet'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  '/org/{orgId}/groups':
+    get:
+      summary: Get groups by org
+      tags:
+        - Organization
+        - Group
+      operationId: groupsList
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Group created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Groups'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      summary: Create new group
+      tags:
+        - Organization
+        - Group
+      operationId: createGroup
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Group DTO object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroup'
+      responses:
+        '201':
+          description: Group created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  '/org/{orgId}/groups/{groupId}':
+    get:
+      summary: get group by id
+      tags:
+        - Organization
+        - Group
+      operationId: getGroupById
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: groupId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Get group by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update group
+      tags:
+        - Organization
+        - Group
+      operationId: updateGroup
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: groupId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Group DTO object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroup'
+      responses:
+        '204':
+          description: Role successfully updated.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      summary: delete group
+      tags:
+        - Organization
+        - Group
+      operationId: deleteGroup
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: groupId
+          schema:
+            type: string
+          required: true
+      responses:
+        '204':
+          description: Role successfully updated.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  '/org/{orgId}/groups/{groupId}/members':
+    patch:
+      summary: Assign user to a group
+      tags:
+        - Organization
+        - Group
+      operationId: assingUserToGroup
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: groupId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: User ID
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+      responses:
+        '204':
+          description: User successfully assigned to the group.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  '/org/{orgId}/groups/{groupId}/members/{userId}':
+    delete:
+      summary: Remove user from group
+      tags:
+        - Organization
+        - Group
+      operationId: removeUserFromGroup
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: groupId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+      responses:
+        '204':
+          description: User successfully removed from the group.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  '/org/{orgId}/groups/{groupId}/expense-types':
+    patch:
+      summary: Assign expense types to a group
+      tags:
+        - Organization
+        - Group
+      operationId: assingExpenseTypesToGroup
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: groupId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Expense types IDS
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                expenseTypes:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '204':
+          description: Expense types successfully assigned to the group.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /currencies:
+    get:
+      summary: Get list of currencies
+      tags:
+        - resources
+      operationId: getCurrencies
+      parameters:
+        - in: query
+          name: code
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: List of currencies supported by the organization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currencies'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /users:
+    get:
+      summary: List of filtered users by organization
+      tags:
+        - Users
+      operationId: usersBYorganization
+      parameters:
+        - in: query
+          name: orgId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: List of filtered users by organization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  '/users/{userId}':
+    patch:
+      summary: Change user role
+      tags:
+        - Users
+      operationId: changeUserRole
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Role ID
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roleId:
+                  type: string
+      responses:
+        '204':
+          description: Role successfully associated with user.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  '/users/{userId}/org/{orgId}':
+    patch:
+      summary: Remove a user from an orgnization
+      tags:
+        - Users
+      operationId: removeUserFromOrg
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+      responses:
+        '204':
+          description: Role successfully associated with user.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /roles:
+    get:
+      summary: List of roles filtred by name
+      tags:
+        - Users
+      operationId: getRoles
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: List of roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Roles'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  '/org/{orgId}/exp-types':
+    get:
+      summary: Get list of expense types
+      tags:
+        - Expense types
+        - Organization
+      operationId: getExpenseTypes
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: List of expense types
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExpenseTypes'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  '/org/{orgId}/exp-types/{expenseTypeId}':
+    get:
+      summary: Get expense type by id
+      tags:
+        - Expense types
+        - Organization
+      operationId: getExpenseType
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: expenseTypeId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Expense type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExpenseType'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  '/org/{orgId}/taxes':
+    get:
+      summary: Get list of taxes
+      tags:
+        - Taxes
+        - Organization
+      operationId: getTaxes
+      parameters:
+        - in: path
+          name: orgId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: List of taxes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Taxes'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  '/sheets/{sheetId}/expenses':
+    get:
+      summary: Get expenses by sheet
+      tags:
+        - Expenses
+      operationId: getExpenses
+      parameters:
+        - in: path
+          name: sheetId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Expenses list by sheet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Expenses'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  '/sheets/{sheetId}/expenses/{expenseId}':
+    get:
+      summary: Get expense by id
+      tags:
+        - Expenses
+      operationId: getExpense
+      parameters:
+        - in: path
+          name: sheetId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: expenseId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Expense
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Expense'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update expense
+      tags:
+        - Expenses
+      parameters:
+        - in: path
+          name: sheetId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: expenseId
+          schema:
+            type: string
+          required: true
+      operationId: updateExpense
+      requestBody:
+        description: Update expense body request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateExpense'
+      responses:
+        '204':
+          description: Expense updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  '/upload/{type}/{typeId}':
+    post:
+      summary: Upload attachment file
+      tags:
+        - Upload attatchment
+      operationId: uploadAttachment
+      parameters:
+        - in: path
+          name: type
+          schema:
+            type: string
+            enum:
+              - exp
+        - in: path
+          name: typeId
+          schema:
+            type: string
+      requestBody:
+        description: Upload attatchment file
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Upload'
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Profile:
+      type: object
+      properties:
+        userId:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        nickname:
+          type: string
+        lastName:
+          type: string
+        firstName:
+          type: string
+        picture:
+          type: string
+        defaultCurrencyId:
+          type: string
+        phoneNumber:
+          type: string
+        organizations:
+          type: array
+          items:
+            type: string
+    UpdateProfile:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        defaultCurrencyId:
+          type: string
+        email:
+          type: string
+        lastName:
+          type: string
+        firstName:
+          type: string
+        preferredLang:
+          type: string
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        contact:
+          type: object
+          properties:
+            name:
+              type: string
+            phone:
+              type: string
+            email:
+              type: string
+    Organizations:
+      type: array
+      items:
+        $ref: '#/components/schemas/Organization'
+    UpdateOrganization:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        contact:
+          type: object
+          properties:
+            name:
+              type: string
+              nullable: true
+            phone:
+              type: string
+              nullable: true
+            email:
+              type: string
+              nullable: true
+    Sheet:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        status:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        submittedOn:
+          type: string
+          format: date-time
+        exported:
+          type: boolean
+        total:
+          type: integer
+    Currencies:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          format:
+            type: string
+          nameFR:
+            type: string
+          nameEN:
+            type: string
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/Profile'
+    Roles:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          description:
+            type: string
+            nullable: true
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        orgId:
+          type: string
+        members:
+          type: array
+          items:
+            type: string
+        expenseTypes:
+          type: array
+          items:
+            type: string
+    Groups:
+      type: array
+      items:
+        $ref: '#/components/schemas/Group'
+    CreateGroup:
+      type: object
+      properties:
+        name:
+          type: string
+    Expense:
+      type: object
+      properties:
+        id:
+          type: string
+        orgId:
+          type: string
+        sheetId:
+          type: string
+        type:
+          type: string
+        source:
+          type: string
+        date:
+          type: integer
+          format: date-time
+          example: '2020-12-15'
+        amount:
+          type: object
+          properties:
+            curr:
+              type: string
+            value:
+              type: integer
+              example: 10.5
+            tax:
+              type: object
+              properties:
+                id:
+                  type: string
+                value:
+                  amount: integer
+                  example: 10.5
+        attachments:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              originalName:
+                type: string
+    Expenses:
+      type: array
+      items:
+        $ref: '#/components/schemas/Expense'
+    UpdateExpense:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        type:
+          type: string
+        source:
+          type: string
+        amount:
+          type: integer
+          example: 52.5
+        currency:
+          type: string
+        tax:
+          type: string
+        taxAmount:
+          type: integer
+          example: 7.2
+    ExpenseTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/ExpenseType'
+    ExpenseType:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        type:
+          type: string
+        multiplicator:
+          type: integer
+          example: 0.25
+        i18n:
+          type: array
+          items:
+            type: object
+            properties:
+              lang:
+                type: string
+                example: fr
+              fields:
+                type: object
+                properties:
+                  name:
+                    type: string
+    Taxes:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          code:
+            type: string
+          defaultRate:
+            type: integer
+            example: 0.09975
+          i18n:
+            type: array
+            items:
+              type: object
+              properties:
+                lang:
+                  type: string
+                  example: fr
+                fields:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+    Upload:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    NotFound:
+      description: The specified resource was not found
+    BadRequest:
+      description: Bad request
+security:
+  - bearerAuth: []

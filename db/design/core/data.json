@@ -1,0 +1,51 @@
+[
+  {
+    "_id": "org:paid-active",
+    "name": "Org Paid and Active zzzz",
+    "contact": {
+      "name": "John Doe",
+      "phone": "5555555555",
+      "email": "foo@example.com"
+    },
+    "options": {
+      "allow_ask_join": false
+    },
+    "subscription": "paid",
+    "strype_data": {},
+    "status": "active"
+  },
+  {
+    "_id": "org:trial",
+    "name": "Org on Trial",
+    "contact": {
+      "name": "Philippe Trial",
+      "phone": "5555555555",
+      "email": "bar@example.com"
+    },
+    "options": {
+      "allow_ask_join": true
+    },
+    "trial": {
+      "started_on": "2020-01-01",
+      "ends_on": "2020-03-01"
+    },
+    "status": "active"
+  },
+  {
+    "_id": "org:trial-ended",
+    "name": "Org on Ended Trial",
+    "contact": {
+      "name": "Philippe E. D. Trial",
+      "phone": "5555555555",
+      "email": "boo@example.com"
+    },
+    "options": {
+      "allow_ask_join": true
+    },
+    "trial": {
+      "started_on": "1999-08-12",
+      "ends_on": "1999-09-12"
+    },
+    "status": "inactive"
+  }
+]

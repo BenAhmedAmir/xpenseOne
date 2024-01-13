@@ -1,0 +1,59 @@
+Organization:
+  type: object
+  properties:
+    id:
+      type: string
+    name:
+      type: string
+    status:
+      type: string
+    contact:
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+Organizations:
+  type: array
+  items:
+    $ref: '#/Organization'
+UpdateOrganization:
+  type: object
+  properties:
+    name:
+      type: string
+      nullable: true
+    contact:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+Sheet:
+  type: object
+  properties:
+    id:
+      type: string
+    label:
+      type: string
+    status:
+      type: string
+    creationDate:
+      type: string
+      format: date-time
+    submittedOn:
+      type: string
+      format: date-time
+    exported:
+      type: boolean
+    total:
+      type: integer

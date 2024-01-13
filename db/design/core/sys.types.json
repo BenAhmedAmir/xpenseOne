@@ -1,0 +1,55 @@
+{
+  "_id": "sys:types",
+  "internal_note": "préfix des partitions CouchDB",
+  "sys": {
+    "notes": "Partition contenant les documents système",
+    "fr": "Système",
+    "en": "System"
+  },
+  "exp": {
+    "notes": "Partition contenant les dépenses",
+    "fr": "Dépense",
+    "en": "Expense"
+  },
+  "expt": {
+    "fr": "Type de dépense",
+    "en": "Expense Type"
+  },
+  "sheet": {
+    "fr": "Feuille de Dépense",
+    "en": "Expense sheet"
+  },
+  "curr": {
+    "fr": "Devise",
+    "en": "Currency"
+  },
+  "opt": {
+    "fr": "Option",
+    "en": "Option"
+  },
+  "cat": {
+    "fr": "Categories",
+    "en": ""
+  },
+  "usr": {
+    "fr": "Utilisateur",
+    "en": "User"
+  },
+  "clt": {
+    "notes": "Clients possibles des utilisateurs corpo de la plateforme",
+    "fr": "Client",
+    "en": "Customer"
+  },
+  "org": {
+    "fr": "Organisation",
+    "en": "Organization"
+  },
+  "grp": {
+    "fr": "Groupe",
+    "en": "Group"
+  },
+  "tx": {
+    "fr": "Taxes",
+    "en": "Taxes"
+  }
+}

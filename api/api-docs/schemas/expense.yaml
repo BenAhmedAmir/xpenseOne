@@ -1,0 +1,49 @@
+Expenses:
+  type: array
+  items:
+    $ref: "#/Expense"
+
+Expense:
+  type: object
+  properties:
+    id:
+      type: string
+    orgId:
+      type: string
+    sheetId:
+      type: string
+    type:
+      type: string
+    source:
+      type: string
+    date:
+      type: integer
+      format: date-time
+      example: "2020-12-15"
+    amount:
+       $ref: './amount.yaml#/Amount'
+    attachments:
+      type: array
+      items:
+        $ref: './attachment.yaml#/Attachment'
+
+UpdateExpense:
+  type: object
+  properties:
+    date:
+      type: string
+      format: date-time
+    type:
+      type: string
+    source:
+      type: string
+    amount:
+      type: integer
+      example: 52.5
+    currency:
+      type: string
+    tax:
+      type: string
+    taxAmount:
+      type: integer
+      example: 7.2

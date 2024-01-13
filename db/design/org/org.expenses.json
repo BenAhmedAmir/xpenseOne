@@ -1,0 +1,60 @@
+[
+    {
+        "_id": "exp:fae81b1aba0adb59651b5a5fa801c5f3",
+        "sheetId": "sheet:1",
+        "date": "2020-12-15",
+        "type": "expt:lunch",
+        "source": "Philippe",
+        "amount": {
+            "curr": "CAD",
+            "value": 12.45,
+            "tax": {
+                "id": "tx:tps",
+                "amount": 1.2
+            }
+        },
+        "attachments": [
+            {
+                "name": "e00d0b45-2538-4952-8f9f-b1e51061cee4.pdf",
+                "originalName": "Bill 1.pdf"
+            },
+            {
+                "name": "8f10579b-0ba7-4a2f-a63b-c9cc2adf7a22.pdf",
+                "originalName": "Bill 2.pdf"
+            }
+        ],
+        "comments": [
+            {
+                "user": "google-oauth2|103689881958333096958",
+                "ts": "2020-12-15T18:02:02Z",
+                "message": "Hello!"
+            }
+        ]
+    },
+    {
+        "_id": "exp:fae81b1aba0adb59651b5a5fa801ca17",
+        "sheetId": "sheet:1",
+        "date": "2020-12-20",
+        "type": "expt:km",
+        "source": "Jean-Pierre",
+        "km": 100,
+        "amount": {
+            "value": 25
+        },
+        "attachments": [],
+        "comments": []
+    },
+    {
+        "_id": "exp:fae81b1aba0adb59651b5a5fa801d666",
+        "sheetId": "sheet:2",
+        "date": "2020-12-03",
+        "type": "expt:km",
+        "source": "Alexandre",
+        "km": 100,
+        "amount": {
+            "value": 25
+        },
+        "attachments": [],
+        "comments": []
+    }
+]
